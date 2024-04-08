@@ -1,0 +1,7 @@
+# Project settings
+.idea/
+
+__pycache__
+.vscode
+.DS_Store
+.pyc
