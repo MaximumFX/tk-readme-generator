@@ -37,7 +37,7 @@ jobs:
           pip install -r ./tmp/tk-readme-generator/requirements.txt
 
       - name: execute py script
-        run: python ./tmp/tk-readme-generator/tk-readme-generator.py info.yml -o -p "${{ github.event.inputs.prepend }}" -a "${{ github.event.inputs.append }}"
+        run: python ./tmp/tk-readme-generator/tk-readme-generator.py info.yml -o -p "${{ inputs.prepend }}" -a "${{ inputs.append }}"
 
       - name: commit files
         run: |
