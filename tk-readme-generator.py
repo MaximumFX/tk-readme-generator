@@ -104,7 +104,7 @@ else:
     readme = f"# {Path(filepath.parent).name}"
 
 if (Path(filepath.parent) / "icon_256.png").is_file():
-    readme += ' <img src="icon_256.png" alt="Icon" height="40"/>'
+    readme += ' <img src="icon_256.png" alt="Icon" height="24"/>'
 
 readme += "\n\n"
 
