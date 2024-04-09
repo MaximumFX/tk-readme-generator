@@ -109,7 +109,7 @@ if (Path(filepath.parent) / "icon_256.png").is_file():
 readme += "\n\n"
 
 # Prepend readme file
-if "prepend" in args and args["prepend"] is not None:
+if "prepend" in args and args.prepend is not None:
     prepend_filepath = Path(args.prepend)
     if prepend_filepath.is_file():
         with open(prepend_filepath, "r") as prepend_file:
@@ -221,7 +221,7 @@ if "configuration" in info and info["configuration"] is not None:
         readme += "\n"
 
 # Append readme file
-if "append" in args and args["append"] is not None:
+if "append" in args and args.append is not None:
     append_filepath = Path(args.append)
     if append_filepath.is_file():
         with open(append_filepath, "r") as append_file:
