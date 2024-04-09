@@ -23,6 +23,10 @@ runs:
       with:
         python-version: '3.9'
 
+    - name: info
+      shell: bash
+      run: echo ${{ github.action_path }}
+
     - name: install python packages
       shell: bash
       run: |
