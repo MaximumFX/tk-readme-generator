@@ -108,6 +108,9 @@ if (Path(filepath.parent) / "icon_256.png").is_file():
 
 readme += "\n\n"
 
+if "description" in info:
+    readme += f"{info['description']}\n\n"
+
 # Prepend readme file
 if args.prepend is not None and args.prepend != "":
     prepend_filepath = Path(args.prepend)
@@ -115,9 +118,6 @@ if args.prepend is not None and args.prepend != "":
         with open(prepend_filepath, "r") as prepend_file:
             readme += prepend_file.read()
             readme += "\n\n"
-
-if "description" in info:
-    readme += f"{info['description']}\n\n"
 
 if "supported_engines" in info:
     readme += f"> Supported engines: {', '.join(info['supported_engines'])}\n\n"
