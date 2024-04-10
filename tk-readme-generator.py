@@ -108,8 +108,18 @@ if (Path(filepath.parent) / "icon_256.png").is_file():
 
 readme += "\n\n"
 
+if "documentation_url" in info:
+    readme += f"[![Documentation](https://img.shields.io/badge/documentation-blue?style=for-the-badge)]({info['documentation_url']})\n"
+if "support_url" in info:
+    readme += f"[![Support](https://img.shields.io/badge/support-orange?style=for-the-badge)]({info['support_url']})\n"
+if "documentation_url" in info or "support_url" in info:
+    readme += "\n"
+
 if "description" in info:
     readme += f"{info['description']}\n\n"
+
+if "supported_engines" in info and info["supported_engines"] is not None:
+    readme += f"> Supported engines: {', '.join(info['supported_engines'])}\n\n"
 
 # Prepend readme file
 if args.prepend is not None and args.prepend != "":
@@ -118,9 +128,6 @@ if args.prepend is not None and args.prepend != "":
         with open(prepend_filepath, "r") as prepend_file:
             readme += prepend_file.read()
             readme += "\n\n"
-
-if "supported_engines" in info:
-    readme += f"> Supported engines: {', '.join(info['supported_engines'])}\n\n"
 
 readme += "## Requirements\n\n"
 
@@ -151,24 +158,44 @@ readme += table(
     ],
 )
 
-requires_shotgun_fields = "-"
 if "requires_shotgun_fields" in info and info["requires_shotgun_fields"] is not None:
-    requires_shotgun_fields = info["requires_shotgun_fields"]
-readme += f"**ShotGrid fields:** {requires_shotgun_fields}\n\n"
+    readme += "### ShotGrid fields:\n\n"
+    for key, value in info["requires_shotgun_fields"].items():
+        readme += f"**{key}:**\n"
+        for field in value:
+            readme += f"- {field['system_name']} `{field['type']}`\n"
+    readme += "\n"
 
-frameworks = "-"
 if "frameworks" in info and info["frameworks"] is not None:
-    frameworks = ", ".join(info["frameworks"])
-readme += f"**Frameworks:** {frameworks}\n\n"
+    readme += "**Frameworks:**\n\n"
+    readme += table(
+        ["Name", "Version", "Minimum version"],
+        list(
+            map(
+                lambda framework: [
+                    framework["name"],
+                    framework["version"],
+                    framework.get("minimum_version", ""),
+                ],
+                info["frameworks"],
+            )
+        ),
+    )
+    readme += "\n\n"
 
 config_names = {
     "str": "Strings",
+    "int": "Integers",
     "bool": "Booleans",
     "dict": "Dictionaries",
     "list": "Lists",
     "config_path": "Config paths",
     "template": "Templates",
+    "publish_type": "Publish types",
     "hook": "Hooks",
+    "shotgun_entity_type": "ShotGrid entity types",
+    "shotgun_permission_group": "ShotGrid permission groups",
+    "shotgun_filter": "ShotGrid filters",
 }
 if "configuration" in info and info["configuration"] is not None:
     readme += "## Configuration\n\n"
