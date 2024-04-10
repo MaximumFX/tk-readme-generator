@@ -163,12 +163,17 @@ readme += f"**Frameworks:** {frameworks}\n\n"
 
 config_names = {
     "str": "Strings",
+    "int": "Integers",
     "bool": "Booleans",
     "dict": "Dictionaries",
     "list": "Lists",
     "config_path": "Config paths",
     "template": "Templates",
+    "publish_type": "Publish types",
     "hook": "Hooks",
+    "shotgun_entity_type": "ShotGrid entity types",
+    "shotgun_permission_group": "ShotGrid permission groups",
+    "shotgun_filter": "ShotGrid filters",
 }
 if "configuration" in info and info["configuration"] is not None:
     readme += "## Configuration\n\n"
