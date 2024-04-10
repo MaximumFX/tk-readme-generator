@@ -4,16 +4,22 @@ import yaml
 
 
 def table(cols: list[str], rows: list[list[str]]) -> str:
+    def sanitize(content: str):
+        if content is None:
+            return ""
+        return content.strip().replace("\n", "<br>").replace("|", "\\|")
+
     sizes = list(map(len, cols))
     for row in rows:
         for i, item in enumerate(row):
-            item = item.strip()
+            item = sanitize(item)
             if len(item) > sizes[i]:
                 sizes[i] = len(item)
 
     table_md = ""
     for i, col in enumerate(cols):
-        table_md += f"| {col.strip()}{' ' * (sizes[i] - len(col.strip()) + 1)}"
+        content = sanitize(col)
+        table_md += f"| {content}{' ' * (sizes[i] - len(content) + 1)}"
     table_md += "|\n"
 
     for i, col in enumerate(cols):
@@ -22,7 +28,8 @@ def table(cols: list[str], rows: list[list[str]]) -> str:
 
     for row in rows:
         for i, item in enumerate(row):
-            table_md += f"| {item.strip()}{' ' * (sizes[i] - len(item.strip()) + 1)}"
+            content = sanitize(item)
+            table_md += f"| {content}{' ' * (sizes[i] - len(content) + 1)}"
         table_md += "|\n"
     return table_md + "\n"
 
@@ -197,6 +204,7 @@ config_names = {
     "shotgun_entity_type": "ShotGrid entity types",
     "shotgun_permission_group": "ShotGrid permission groups",
     "shotgun_filter": "ShotGrid filters",
+    "tank_type": "Tank types",
 }
 if "configuration" in info and info["configuration"] is not None:
     readme += "## Configuration\n\n"
@@ -245,6 +253,7 @@ if "configuration" in info and info["configuration"] is not None:
                     value,
                 )
             )
+        print(cols, rows)
         readme += table(cols, rows)
         readme += "\n"
 
