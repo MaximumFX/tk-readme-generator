@@ -1,5 +1,5 @@
-name: Generate README.md
-description: CLI README.md generator for ShotGrid frameworks/engines/apps.
+name: update-shotgrid-readme
+description: Automatic README.md updater for ShotGrid frameworks/engines/apps.
 
 inputs:
   github_token:
