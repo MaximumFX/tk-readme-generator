@@ -158,10 +158,13 @@ readme += table(
     ],
 )
 
-requires_shotgun_fields = "-"
 if "requires_shotgun_fields" in info and info["requires_shotgun_fields"] is not None:
-    requires_shotgun_fields = info["requires_shotgun_fields"]
-readme += f"**ShotGrid fields:** {requires_shotgun_fields}\n\n"
+    readme += "### ShotGrid fields:\n\n"
+    for key, value in info["requires_shotgun_fields"].items():
+        readme += f"**{key}:**\n"
+        for field in value:
+            readme += f"- {field['system_name']} `{field['type']}`'\n"
+    readme += "\n"
 
 frameworks = "-"
 if "frameworks" in info and info["frameworks"] is not None:
