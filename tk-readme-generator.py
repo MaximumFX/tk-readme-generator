@@ -226,9 +226,9 @@ if "configuration" in info and info["configuration"] is not None:
                 map(
                     lambda item: [
                         f"`{item['name']}`",
-                        item["description"],
-                        item["default_value"],
-                        item["fields"],
+                        item.get("description", ""),
+                        item.get("default_value", ""),
+                        item.get("fields", ""),
                     ],
                     value,
                 )
@@ -238,8 +238,8 @@ if "configuration" in info and info["configuration"] is not None:
                 map(
                     lambda item: [
                         f"`{item['name']}`",
-                        item["description"],
-                        f'{item["default_value"]}',
+                        item.get("description", ""),
+                        f'{item.get("default_value", "")}',
                     ],
                     value,
                 )
