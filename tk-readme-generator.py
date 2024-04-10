@@ -108,6 +108,13 @@ if (Path(filepath.parent) / "icon_256.png").is_file():
 
 readme += "\n\n"
 
+if "documentation_url" in info:
+    readme += f"[![Documentation](https://img.shields.io/badge/documentation-blue?style=for-the-badge)]({info['documentation_url']})\n"
+if "support_url" in info:
+    readme += f"[![Support](https://img.shields.io/badge/support-orange?style=for-the-badge)]({info['support_url']})\n"
+    if "documentation_url" in info:
+        readme += "\n"
+
 if "description" in info:
     readme += f"{info['description']}\n\n"
 
