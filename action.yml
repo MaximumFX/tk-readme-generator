@@ -27,6 +27,10 @@ runs:
       shell: bash
       run: echo action_path ${{ github.action_path }}
 
+    - name: info
+      shell: bash
+      run: ls
+
     - name: install python packages
       shell: bash
       run: |
