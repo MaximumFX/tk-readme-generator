@@ -5,7 +5,9 @@ import yaml
 
 def table(cols: list[str], rows: list[list[str]]) -> str:
     def sanitize(content: str):
-        return content.strip().replace("\n", "<br>").replace("|", "\|")
+        if content is None:
+            return ""
+        return content.strip().replace("\n", "<br>").replace("|", "\\|")
 
     sizes = list(map(len, cols))
     for row in rows:
@@ -16,7 +18,8 @@ def table(cols: list[str], rows: list[list[str]]) -> str:
 
     table_md = ""
     for i, col in enumerate(cols):
-        table_md += f"| {sanitize(col)}{' ' * (sizes[i] - len(sanitize(col)) + 1)}"
+        content = sanitize(col)
+        table_md += f"| {content}{' ' * (sizes[i] - len(content) + 1)}"
     table_md += "|\n"
 
     for i, col in enumerate(cols):
@@ -25,9 +28,8 @@ def table(cols: list[str], rows: list[list[str]]) -> str:
 
     for row in rows:
         for i, item in enumerate(row):
-            table_md += (
-                f"| {sanitize(item)}{' ' * (sizes[i] - len(sanitize(item)) + 1)}"
-            )
+            content = sanitize(item)
+            table_md += f"| {content}{' ' * (sizes[i] - len(content) + 1)}"
         table_md += "|\n"
     return table_md + "\n"
 
