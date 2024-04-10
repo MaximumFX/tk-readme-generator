@@ -25,7 +25,7 @@ runs:
 
     - name: info
       shell: bash
-      run: echo ${{ github.action_path }}
+      run: echo action_path ${{ github.action_path }}
 
     - name: install python packages
       shell: bash
