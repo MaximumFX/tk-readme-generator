@@ -118,6 +118,9 @@ if "support_url" in info:
 if "description" in info:
     readme += f"{info['description']}\n\n"
 
+if "supported_engines" in info and info["supported_engines"] is not None:
+    readme += f"> Supported engines: {', '.join(info['supported_engines'])}\n\n"
+
 # Prepend readme file
 if args.prepend is not None and args.prepend != "":
     prepend_filepath = Path(args.prepend)
@@ -125,9 +128,6 @@ if args.prepend is not None and args.prepend != "":
         with open(prepend_filepath, "r") as prepend_file:
             readme += prepend_file.read()
             readme += "\n\n"
-
-if "supported_engines" in info and info["supported_engines"] is not None:
-    readme += f"> Supported engines: {', '.join(info['supported_engines'])}\n\n"
 
 readme += "## Requirements\n\n"
 
