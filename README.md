@@ -3,17 +3,23 @@
 
 # ShotGrid Readme Generator
 
-CLI README.md generator for ShotGrid frameworks/engines/apps.
+CLI/GitHub Action README.md generator for ShotGrid frameworks/engines/apps.
 
-## Requirements
+## GitHub Action
+
+Add this GitHub Action to a workflow to automatically update the README.md when a change is committed to info.yml.
+See an example workflow [here](.github/workflow-templates/update-readme.yml)
+
+## CLI
+### Requirements
 
 Requires `pyyaml`
 
-## Usage
+### Usage
 
 `python tk-readme-generator.py <INFO_FILEPATH>`
 
-### Options
+#### Options
 
 | Argument                        | Description                                                     |
 |---------------------------------|-----------------------------------------------------------------|
