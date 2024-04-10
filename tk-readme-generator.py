@@ -228,7 +228,7 @@ if "configuration" in info and info["configuration"] is not None:
                         f"`{item['name']}`",
                         item["description"],
                         item["default_value"],
-                        item["fields"],
+                        item.get("fields", ""),
                     ],
                     value,
                 )
