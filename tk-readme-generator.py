@@ -163,7 +163,7 @@ if "requires_shotgun_fields" in info and info["requires_shotgun_fields"] is not 
     for key, value in info["requires_shotgun_fields"].items():
         readme += f"**{key}:**\n"
         for field in value:
-            readme += f"- {field['system_name']} `{field['type']}`'\n"
+            readme += f"- {field['system_name']} `{field['type']}`\n"
     readme += "\n"
 
 if "frameworks" in info and info["frameworks"] is not None:
