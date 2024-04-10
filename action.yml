@@ -1,5 +1,8 @@
 name: update-shotgrid-readme
 description: Automatic README.md updater for ShotGrid frameworks/engines/apps.
+branding:
+  icon: book-open
+  color: blue
 
 inputs:
   github_token:
