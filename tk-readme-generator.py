@@ -7,12 +7,13 @@ def table(cols: list[str], rows: list[list[str]]) -> str:
     sizes = list(map(len, cols))
     for row in rows:
         for i, item in enumerate(row):
+            item = item.strip()
             if len(item) > sizes[i]:
                 sizes[i] = len(item)
 
     table_md = ""
     for i, col in enumerate(cols):
-        table_md += f"| {col}{' ' * (sizes[i] - len(col) + 1)}"
+        table_md += f"| {col.strip()}{' ' * (sizes[i] - len(col.strip()) + 1)}"
     table_md += "|\n"
 
     for i, col in enumerate(cols):
@@ -21,7 +22,7 @@ def table(cols: list[str], rows: list[list[str]]) -> str:
 
     for row in rows:
         for i, item in enumerate(row):
-            table_md += f"| {item}{' ' * (sizes[i] - len(item) + 1)}"
+            table_md += f"| {item.strip()}{' ' * (sizes[i] - len(item.strip()) + 1)}"
         table_md += "|\n"
     return table_md + "\n"
 
