@@ -5,6 +5,10 @@ inputs:
   github_token:
     required: true
     description: GitHub secret token
+  infoFile:
+    required: false
+    description: The info.yml file
+    default: info.yml
   prepend:
     required: false
     description: Prepend an existing readme file after the name and description.
@@ -23,23 +27,15 @@ runs:
       with:
         python-version: '3.9'
 
-    - name: info
-      shell: bash
-      run: echo action_path ${{ github.action_path }}
-
-    - name: info
-      shell: bash
-      run: ls
-
     - name: install python packages
       shell: bash
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r ${{ github.action_path }}/requirements.txt
 
     - name: execute py script
       shell: bash
-      run: python tk-readme-generator.py "${{ github.action_path }}/info.yml" -o -p "${{ inputs.prepend }}" -a "${{ inputs.append }}"
+      run: python ${{ github.action_path }}/tk-readme-generator.py "${{ inputs.infoFile }}" -o -p "${{ inputs.prepend }}" -a "${{ inputs.append }}"
 
     - name: commit files
       shell: bash
