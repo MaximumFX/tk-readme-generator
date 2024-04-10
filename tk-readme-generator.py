@@ -126,7 +126,7 @@ if args.prepend is not None and args.prepend != "":
             readme += prepend_file.read()
             readme += "\n\n"
 
-if "supported_engines" in info:
+if "supported_engines" in info and info["supported_engines"] is not None:
     readme += f"> Supported engines: {', '.join(info['supported_engines'])}\n\n"
 
 readme += "## Requirements\n\n"
