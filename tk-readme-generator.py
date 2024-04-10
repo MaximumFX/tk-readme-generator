@@ -170,18 +170,16 @@ if "frameworks" in info and info["frameworks"] is not None:
     readme += "**Frameworks:**\n\n"
     readme += table(
         ["Name", "Version", "Minimum version"],
-        [
-            list(
-                map(
-                    lambda framework: [
-                        framework["name"],
-                        framework["version"],
-                        framework.get("minimum_version", ""),
-                    ],
-                    info["frameworks"],
-                )
+        list(
+            map(
+                lambda framework: [
+                    framework["name"],
+                    framework["version"],
+                    framework.get("minimum_version", ""),
+                ],
+                info["frameworks"],
             )
-        ],
+        ),
     )
     readme += "\n\n"
 
