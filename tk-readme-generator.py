@@ -166,10 +166,24 @@ if "requires_shotgun_fields" in info and info["requires_shotgun_fields"] is not 
             readme += f"- {field['system_name']} `{field['type']}`'\n"
     readme += "\n"
 
-frameworks = "-"
 if "frameworks" in info and info["frameworks"] is not None:
-    frameworks = ", ".join(info["frameworks"])
-readme += f"**Frameworks:** {frameworks}\n\n"
+    readme += "**Frameworks:**\n\n"
+    readme += table(
+        ["Name", "Version", "Minimum version"],
+        [
+            list(
+                map(
+                    lambda framework: [
+                        framework["name"],
+                        framework["version"],
+                        framework.get("minimum_version", ""),
+                    ],
+                    info["frameworks"],
+                )
+            )
+        ],
+    )
+    readme += "\n\n"
 
 config_names = {
     "str": "Strings",
