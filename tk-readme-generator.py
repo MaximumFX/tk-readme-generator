@@ -253,7 +253,6 @@ if "configuration" in info and info["configuration"] is not None:
                     value,
                 )
             )
-        print(cols, rows)
         readme += table(cols, rows)
         readme += "\n"
 
