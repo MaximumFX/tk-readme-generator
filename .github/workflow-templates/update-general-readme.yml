@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: MaximumFX/tk-readme-generator@v1.0.4
+      - uses: MaximumFX/tk-readme-generator@v1.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           mode: general
