@@ -1,6 +1,6 @@
 name: Update ShotGrid Readme
 author: MaximumFX
-description: Automatic README.md updater for ShotGrid frameworks/engines/apps.
+description: Automatic README.md generator for ShotGrid frameworks/engines/apps and configurations.
 branding:
   icon: book-open
   color: blue
@@ -15,15 +15,13 @@ inputs:
     default: info.yml
   prepend:
     required: false
-    description: Prepend an existing readme file after the name and description.
+    description: Filepath to an existing readme file to prepend after the name and description.
   append:
     required: false
-    description: Append an existing readme file to the end.
+    description: Filepath to an existing readme file to append to the end.
   mode:
     required: false
-    description: >
-      Make a readme for a general info file (framework/engine/app) or a config info file.
-      If none provided the type will be try to be detected automatically.
+    description: Which generator should be used: 'general' for frameworks/engines/apps, 'config' for configurations.
     type: choice
     options:
       - general
