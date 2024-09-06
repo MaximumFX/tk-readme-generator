@@ -1,4 +1,5 @@
-name: update-shotgrid-readme
+name: Update ShotGrid Readme
+author: MaximumFX
 description: Automatic README.md updater for ShotGrid frameworks/engines/apps.
 branding:
   icon: book-open
