@@ -21,7 +21,7 @@ inputs:
     description: Filepath to an existing readme file to append to the end.
   mode:
     required: false
-    description: Which generator should be used: 'general' for frameworks/engines/apps, 'config' for configurations.
+    description: "Which generator should be used: 'general' for frameworks/engines/apps, 'config' for configurations."
     type: choice
     options:
       - general
