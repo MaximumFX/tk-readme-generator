@@ -15,3 +15,4 @@ jobs:
       - uses: MaximumFX/tk-readme-generator@v1.0.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          mode: config

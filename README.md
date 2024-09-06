@@ -3,17 +3,17 @@
 
 # ShotGrid Readme Generator
 
-CLI/GitHub Action README.md generator for ShotGrid frameworks/engines/apps.
+CLI/GitHub Action README.md generator for ShotGrid frameworks/engines/apps and configurations.
 
 ## GitHub Action
 
 Add this GitHub Action to a workflow to automatically update the README.md when a change is committed to info.yml.
-See an example workflow [here](.github/workflow-templates/update-readme.yml).
+See example workflows: [framework/engine/app](.github/workflow-templates/update-general-readme.yml) and [configuration](.github/workflow-templates/update-config-readme.yml).
 
 ## CLI
 ### Requirements
 
-Requires `pyyaml`
+Requires `pyyaml`, `semver`
 
 ### Usage
 
@@ -21,8 +21,9 @@ Requires `pyyaml`
 
 #### Options
 
-| Argument                        | Description                                                     |
-|---------------------------------|-----------------------------------------------------------------|
-| -o, --override                  | Override the existing readme.                                   |
-| -p FILEPATH, --prepend FILEPATH | Prepend an existing readme file after the name and description. |
-| -a FILEPATH, --append FILEPATH  | Append an existing readme file to the end.                      |
+| Argument                        | Description                                                                                                            |
+|---------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| -o, --override                  | Override the existing readme.                                                                                          |
+| -p FILEPATH, --prepend FILEPATH | Prepend an existing readme file after the name and description.                                                        |
+| -a FILEPATH, --append FILEPATH  | Append an existing readme file to the end.                                                                             |
+| -m MODE, --mode MODE            | Make a readme for a _general_ info file (framework/engine/app) or a _config_ info file. (Options: `general`, `config`) |
