@@ -84,8 +84,8 @@ def generate_readme(
 
     # Decide mode if not provided
     if mode is None:
-        filepath = filepath.parent / "env" / "includes"
-        if filepath.is_dir():
+        includes_filepath = filepath.parent / "env" / "includes"
+        if includes_filepath.is_dir():
             mode = Mode.config
         else:
             mode = Mode.general
